@@ -1,7 +1,7 @@
 # Summary
 
 This is a small blog website built using Flask, a micro web framework for Python. The blog data is retrieved via an API endpoint from a JSON storage bin hosted by **npoint.io**. 
-The Contact Me form is powered by WTForms.
+The Contact Me form is powered by WTForms. The theme for the blog is the 'Start Bootstrap - Clean Blog v6.0.9' theme (licensed under MIT) from startbootstrap.com.
 
 ## Notes
 
