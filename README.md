@@ -6,3 +6,4 @@ The Contact Me form is powered by WTForms.
 ## Notes
 
 - Currently contains nonsense example blog posts.
+- Could use further reduction of repetition amongst the HTML files.
