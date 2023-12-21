@@ -10,10 +10,14 @@ The Contact Me form is powered by WTForms. The theme for the blog is the 'Start 
 
 ## Screenshots
 
-<img width="852" alt="image" src="https://github.com/mattmanalang/python-flask-blog-site/assets/73713903/ad090436-ec2c-4ce5-9707-0d8b3a062238">
+**Home Page**
+<img width="852" alt="image" src="https://github.com/mattmanalang/python-flask-blog-site/assets/73713903/a0225459-73b6-46e5-b888-255a58bc5d59">
 <br>
 <br>
-<img width="852" alt="image" src="https://github.com/mattmanalang/python-flask-blog-site/assets/73713903/84e7e5c3-d594-45e6-acd1-0798224ab5da">
+
+**Post Page**
+<img width="852" alt="image" src="https://github.com/mattmanalang/python-flask-blog-site/assets/73713903/11790166-a5a0-43b8-a870-9803217e0baf">
+
 
 
 
