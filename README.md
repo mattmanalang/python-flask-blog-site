@@ -7,3 +7,7 @@ The Contact Me form is powered by WTForms. The theme for the blog is the 'Start 
 
 - Currently contains nonsense example blog posts.
 - Could use further reduction of repetition amongst the HTML files.
+
+## Screenshots
+
+<img width="872" alt="image" src="https://github.com/mattmanalang/python-flask-blog-site/assets/73713903/82dd6b09-7788-400e-998c-2faaa4539b4d">
