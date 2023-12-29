@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
+from flask_bootstrap import Bootstrap5
 from wtforms import StringField, TelField, TextAreaField, SubmitField
 from wtforms.validators import InputRequired, Email, Optional
 import requests
@@ -10,9 +11,13 @@ import os
 class ContactForm(FlaskForm):
     name = StringField(label="Name", validators=[InputRequired()], render_kw={"placeholder": "Enter your name..."})
     email = StringField(label="Email", validators=[InputRequired(), Email()], render_kw={"placeholder": "Enter your email..."})
-    phone = TelField(label="Telephone", validators=[Optional()], render_kw={"placeholder": "Enter your phone number... (optional)"})
-    message = TextAreaField(label="Message", validators=[InputRequired()], render_kw={"placeholder": "Enter your message..."})
+    phone = TelField(label="Telephone", validators=[Optional()], render_kw={"placeholder": "Enter your phone number..."})
+    message = TextAreaField(label="Message", validators=[InputRequired()], render_kw={
+        "placeholder": "Enter your message...",
+        "style": "height: 12rem"
+    })
     send = SubmitField(label="Send")
+
 
 def send_email(message_data):
     user = os.getenv('EMAIL')
@@ -31,6 +36,7 @@ def send_email(message_data):
 
 app = Flask(__name__)
 app.secret_key = "thisisntarealkey"
+bootstrap = Bootstrap5(app)
 blog_data_url = "https://api.npoint.io/cdc3fdc6b1d7e604581a"
 blog_data = requests.get(blog_data_url).json()
 indexed_posts = {post['id']: post for post in blog_data}
@@ -46,19 +52,14 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/contact", methods=['POST', 'GET'])
+@app.route("/contact", methods=['GET', 'POST'])
 def contact():
     contact_form = ContactForm()
-    if request.method == 'GET':
-        # If the user is just landing on the page.
+    if contact_form.validate_on_submit():
+        send_email(request.form)
+        return render_template("contact.html", form=contact_form, form_complete=True)
+    else:
         return render_template("contact.html", form=contact_form, form_complete=False)
-    elif request.method == 'POST':
-        # If the user is submitting a form, send the form data via email.
-        if contact_form.validate_on_submit():
-            send_email(request.form)
-            return redirect(url_for('contact', form=contact_form, form_complete=True))
-        else:
-            return render_template("contact.html", form=contact_form, form_complete=False)
 
 
 @app.route("/post/<int:post_id>")
